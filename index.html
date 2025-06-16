@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Twin City Barns – Order Tool</title>
+  <title>Twin City Barns – Final Order Tool</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
@@ -16,13 +16,14 @@
       <button onclick="loadPDF('cash-sale.pdf')">Use Cash Sale PDF</button>
       <button onclick="loadPDF('rto.pdf')">Use RTO PDF</button>
     </section>
-    <iframe id="pdfFrame" style="width:80%; height:500px; margin-top:20px;"></iframe>
+
+    <iframe id="pdfFrame" style="width:90%; height:600px; margin-top:20px;"></iframe>
 
     <h2>Draw Layout</h2>
-    <iframe src="https://jalon1992.github.io/layout-drawing-tool/" width="500" height="400"></iframe>
+    <iframe src="https://jalon1992.github.io/layout-drawing-tool/" width="900" height="600" style="border:1px solid #aaa;"></iframe>
 
     <h2>Buyer Signature</h2>
-    <canvas id="signaturePad" width="500" height="200" style="border:1px solid #000;"></canvas><br>
+    <canvas id="signaturePad" width="700" height="250" style="border:1px solid #000;"></canvas><br>
     <button onclick="clearSignature()">Clear Signature</button>
 
     <br><br>

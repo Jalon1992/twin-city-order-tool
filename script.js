@@ -1,27 +1,29 @@
 
-let pdfViewer = document.getElementById("pdfFrame");
-let signatureCanvas = document.getElementById("signaturePad");
-let sigCtx = signatureCanvas.getContext("2d");
-let drawing = false;
-
-signatureCanvas.onmousedown = () => drawing = true;
-signatureCanvas.onmouseup = () => drawing = false;
-signatureCanvas.onmousemove = (e) => {
-  if (drawing) {
-    const rect = signatureCanvas.getBoundingClientRect();
-    sigCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-    sigCtx.stroke();
-  }
-};
-
-function clearSignature() {
-  sigCtx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+function loadPDF(file) {
+  const viewer = "https://mozilla.github.io/pdf.js/web/viewer.html?file=";
+  document.getElementById("pdfFrame").src = viewer + encodeURIComponent(file);
 }
 
-function loadPDF(file) {
-  pdfViewer.src = file;
+let signatureCanvas = document.getElementById("signaturePad");
+let sigCtx = signatureCanvas?.getContext("2d");
+let drawing = false;
+
+if (signatureCanvas && sigCtx) {
+  signatureCanvas.onmousedown = () => drawing = true;
+  signatureCanvas.onmouseup = () => drawing = false;
+  signatureCanvas.onmousemove = (e) => {
+    if (drawing) {
+      const rect = signatureCanvas.getBoundingClientRect();
+      sigCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+      sigCtx.stroke();
+    }
+  };
+}
+
+function clearSignature() {
+  if (sigCtx) sigCtx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
 }
 
 function downloadFinalPDF() {
-  alert("This would combine PDF + drawing + signature and start the download (mocked in static version).");
+  alert("In a full version with PDF-lib, this would combine the layout, signature, and selected form into a final PDF.");
 }
